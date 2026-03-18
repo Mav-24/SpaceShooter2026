@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 47545315}
   - component: {fileID: 47545317}
   - component: {fileID: 47545316}
+  - component: {fileID: 47545318}
   m_Layer: 5
   m_Name: Score Box
   m_TagString: Untagged
@@ -195,6 +196,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47545314}
   m_CullTransparentMesh: 1
+--- !u!114 &47545318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47545314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d344413e7a0ca4d9b6cbb20a87c81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Score
 --- !u!1 &73900207
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &158793457
 Transform:
   m_ObjectHideFlags: 0
@@ -545,6 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 240335425}
   - component: {fileID: 240335426}
+  - component: {fileID: 240335427}
   m_Layer: 5
   m_Name: ShieldBar
   m_TagString: Untagged
@@ -625,6 +639,64 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &240335427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240335424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655b71fa7008ce742b98ac851db267c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shield
+  maxProtectionTime: 3
+  shield: {fileID: 158793456}
+--- !u!1 &244133903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244133905}
+  - component: {fileID: 244133904}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &244133904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244133903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28184687894ebb548a065c5d1bdaaf64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceShooterInput
+--- !u!4 &244133905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244133903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 187, y: 983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255911916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,8 +1440,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game
   enemySpawnDelay: 3
+  powerUpDelay: 0
   enemyPrefab: {fileID: 3409777995842195204, guid: 992015109d2204d5c9a3ef2da01e8542, type: 3}
-  enemySpawnRange: {fileID: 1681509736}
+  powerupPrefab: {fileID: 7665686937186703866, guid: 07f2ea3b03915449aa7e57f1e6305b14, type: 3}
+  spawnRange: {fileID: 1681509736}
 --- !u!4 &554489001
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,7 +2213,8 @@ MonoBehaviour:
   speed: 6
   bulletPrefab: {fileID: 7997487652698694584, guid: b45c530985e3745f2970c56d18a41a81, type: 3}
   bulletSpawnPoint: {fileID: 101424959}
-  sliderHealth: {fileID: 0}
+  sliderHealth: {fileID: 73900209}
+  shield: {fileID: 240335427}
 --- !u!58 &786289105
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4720,3 +4795,4 @@ SceneRoots:
   - {fileID: 1637983209}
   - {fileID: 1456637781}
   - {fileID: 1765683186}
+  - {fileID: 244133905}

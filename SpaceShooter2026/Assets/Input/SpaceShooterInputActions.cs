@@ -109,6 +109,15 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c7d2d57-3c7a-4da9-a6a8-f25e9ee6a75c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -188,6 +197,17 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
                     ""action"": ""MoveVertically"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e3cdef0-8a12-4b36-a0a3-676825d9df28"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -198,6 +218,7 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         m_Standard = asset.FindActionMap("Standard", throwIfNotFound: true);
         m_Standard_Fire = m_Standard.FindAction("Fire", throwIfNotFound: true);
         m_Standard_MoveVertically = m_Standard.FindAction("MoveVertically", throwIfNotFound: true);
+        m_Standard_Shield = m_Standard.FindAction("Shield", throwIfNotFound: true);
     }
 
     ~@SpaceShooterInputActions()
@@ -280,6 +301,7 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
     private List<IStandardActions> m_StandardActionsCallbackInterfaces = new List<IStandardActions>();
     private readonly InputAction m_Standard_Fire;
     private readonly InputAction m_Standard_MoveVertically;
+    private readonly InputAction m_Standard_Shield;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -299,6 +321,10 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         /// Provides access to the underlying input action "Standard/MoveVertically".
         /// </summary>
         public InputAction @MoveVertically => m_Wrapper.m_Standard_MoveVertically;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/Shield".
+        /// </summary>
+        public InputAction @Shield => m_Wrapper.m_Standard_Shield;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -331,6 +357,9 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
             @MoveVertically.started += instance.OnMoveVertically;
             @MoveVertically.performed += instance.OnMoveVertically;
             @MoveVertically.canceled += instance.OnMoveVertically;
+            @Shield.started += instance.OnShield;
+            @Shield.performed += instance.OnShield;
+            @Shield.canceled += instance.OnShield;
         }
 
         /// <summary>
@@ -348,6 +377,9 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
             @MoveVertically.started -= instance.OnMoveVertically;
             @MoveVertically.performed -= instance.OnMoveVertically;
             @MoveVertically.canceled -= instance.OnMoveVertically;
+            @Shield.started -= instance.OnShield;
+            @Shield.performed -= instance.OnShield;
+            @Shield.canceled -= instance.OnShield;
         }
 
         /// <summary>
@@ -402,5 +434,12 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveVertically(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shield" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShield(InputAction.CallbackContext context);
     }
 }

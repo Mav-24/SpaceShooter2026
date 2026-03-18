@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Powerup : MonoBehaviour {
   // set in inspector
   public float speed;
 
@@ -12,11 +12,10 @@ public class Enemy : MonoBehaviour {
     if (c.gameObject.CompareTag("Bullet")) {
       Destroy(gameObject);
       Destroy(c.gameObject);
-      Score.Instance.HitEnemy();
     }
     else if (c.gameObject.CompareTag("Player")) {
       Destroy(gameObject);
-      c.gameObject.GetComponent<Player>().DamageFromEnemy();
+      c.gameObject.GetComponent<Player>().RefillShield();
     }
   }
 }
