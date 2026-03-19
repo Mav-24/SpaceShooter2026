@@ -23,6 +23,12 @@ public class Player : MonoBehaviour {
     if (SpaceShooterInput.Instance.input.Fire.WasPressedThisFrame()) {
       GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
     }
+    if (SpaceShooterInput.Instance.input.SuperFire.WasPressedThisFrame()) {
+      GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+      bulletObj.GetComponent<Bullet>().speed *= 2;
+      Instantiate(bulletPrefab, bulletSpawnPoint.position + Vector3.up * 0.5f, Quaternion.identity);
+      Instantiate(bulletPrefab, bulletSpawnPoint.position + Vector3.up * -0.5f, Quaternion.identity);
+    }
 
     var vertMove = SpaceShooterInput.Instance.input.MoveVertically.ReadValue<float>();
     this.transform.Translate(Vector3.up * speed * Time.deltaTime * vertMove);
