@@ -6,6 +6,7 @@ public class Game : MonoBehaviour {
   public GameObject enemyPrefab;
   public GameObject powerupPrefab;
   public BoxCollider2D spawnRange;
+  public UI ui;
 
   // private fields
   private float powerUpDelay;
@@ -32,6 +33,10 @@ public class Game : MonoBehaviour {
     Instantiate(powerupPrefab, powerupSpawnPt, Quaternion.identity);
   }
   void Update() {
+    if (!ui.IsReady) {
+      return;
+    }
+
     // check spawn enemy
     enemySpawnTimer += Time.deltaTime;
     if (enemySpawnTimer >= enemySpawnDelay) {

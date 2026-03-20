@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Slider))]
 public class Shield : MonoBehaviour {
