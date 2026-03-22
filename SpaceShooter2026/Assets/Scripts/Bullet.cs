@@ -1,12 +1,14 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 95f;
+    public float despawnTime = 3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Destroy(gameObject, despawnTime);
     }
 
     // Update is called once per frame
