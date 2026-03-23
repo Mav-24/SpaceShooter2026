@@ -38,9 +38,9 @@ public class Game : MonoBehaviour {
     Instantiate(powerupPrefab, powerupSpawnPt, spawnDirection);
   }
   void Update() {
-    if (!ui.IsReady) {
-      return;
-    }
+    //if (!ui.IsReady) {
+    //  return;
+    //}
 
     // check spawn enemy
     enemySpawnTimer += Time.deltaTime;
