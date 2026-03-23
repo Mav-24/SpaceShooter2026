@@ -120,9 +120,18 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SuperFire"",
+                    ""name"": ""Turn Left"",
                     ""type"": ""Button"",
-                    ""id"": ""c4bc7e1e-f894-43d8-9a83-50b3a3456142"",
+                    ""id"": ""930d83c9-9ca8-49e3-959e-7623bba95666"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Turn Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""0da1400a-d9d1-472e-9ec1-3da384d5b966"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -220,12 +229,45 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
                 },
                 {
                     ""name"": """",
-                    ""id"": ""73f58e99-5f91-4e2f-a3d7-d6d48299a269"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""id"": ""94b9236a-e33c-4258-8e33-9eab2354be1e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SuperFire"",
+                    ""action"": ""Turn Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df61f930-e0ac-4830-8d75-91ddc2727664"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52aa8eba-1923-4327-a74f-7541114daa0a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f031f1f4-171f-4582-b347-051fe3606e3f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -239,7 +281,8 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         m_Standard_Fire = m_Standard.FindAction("Fire", throwIfNotFound: true);
         m_Standard_MoveVertically = m_Standard.FindAction("MoveVertically", throwIfNotFound: true);
         m_Standard_Shield = m_Standard.FindAction("Shield", throwIfNotFound: true);
-        m_Standard_SuperFire = m_Standard.FindAction("SuperFire", throwIfNotFound: true);
+        m_Standard_TurnLeft = m_Standard.FindAction("Turn Left", throwIfNotFound: true);
+        m_Standard_TurnRight = m_Standard.FindAction("Turn Right", throwIfNotFound: true);
     }
 
     ~@SpaceShooterInputActions()
@@ -323,7 +366,8 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
     private readonly InputAction m_Standard_Fire;
     private readonly InputAction m_Standard_MoveVertically;
     private readonly InputAction m_Standard_Shield;
-    private readonly InputAction m_Standard_SuperFire;
+    private readonly InputAction m_Standard_TurnLeft;
+    private readonly InputAction m_Standard_TurnRight;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -348,9 +392,13 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         /// </summary>
         public InputAction @Shield => m_Wrapper.m_Standard_Shield;
         /// <summary>
-        /// Provides access to the underlying input action "Standard/SuperFire".
+        /// Provides access to the underlying input action "Standard/TurnLeft".
         /// </summary>
-        public InputAction @SuperFire => m_Wrapper.m_Standard_SuperFire;
+        public InputAction @TurnLeft => m_Wrapper.m_Standard_TurnLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/TurnRight".
+        /// </summary>
+        public InputAction @TurnRight => m_Wrapper.m_Standard_TurnRight;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -386,9 +434,12 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
             @Shield.started += instance.OnShield;
             @Shield.performed += instance.OnShield;
             @Shield.canceled += instance.OnShield;
-            @SuperFire.started += instance.OnSuperFire;
-            @SuperFire.performed += instance.OnSuperFire;
-            @SuperFire.canceled += instance.OnSuperFire;
+            @TurnLeft.started += instance.OnTurnLeft;
+            @TurnLeft.performed += instance.OnTurnLeft;
+            @TurnLeft.canceled += instance.OnTurnLeft;
+            @TurnRight.started += instance.OnTurnRight;
+            @TurnRight.performed += instance.OnTurnRight;
+            @TurnRight.canceled += instance.OnTurnRight;
         }
 
         /// <summary>
@@ -409,9 +460,12 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
             @Shield.started -= instance.OnShield;
             @Shield.performed -= instance.OnShield;
             @Shield.canceled -= instance.OnShield;
-            @SuperFire.started -= instance.OnSuperFire;
-            @SuperFire.performed -= instance.OnSuperFire;
-            @SuperFire.canceled -= instance.OnSuperFire;
+            @TurnLeft.started -= instance.OnTurnLeft;
+            @TurnLeft.performed -= instance.OnTurnLeft;
+            @TurnLeft.canceled -= instance.OnTurnLeft;
+            @TurnRight.started -= instance.OnTurnRight;
+            @TurnRight.performed -= instance.OnTurnRight;
+            @TurnRight.canceled -= instance.OnTurnRight;
         }
 
         /// <summary>
@@ -474,11 +528,18 @@ public partial class @SpaceShooterInputActions: IInputActionCollection2, IDispos
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShield(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SuperFire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Turn Left" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSuperFire(InputAction.CallbackContext context);
+        void OnTurnLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Turn Right" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTurnRight(InputAction.CallbackContext context);
     }
 }

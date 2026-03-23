@@ -34,9 +34,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SuperFire",
+                    "name": "Turn Left",
                     "type": "Button",
-                    "id": "c4bc7e1e-f894-43d8-9a83-50b3a3456142",
+                    "id": "930d83c9-9ca8-49e3-959e-7623bba95666",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Turn Right",
+                    "type": "Button",
+                    "id": "0da1400a-d9d1-472e-9ec1-3da384d5b966",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -134,12 +143,45 @@
                 },
                 {
                     "name": "",
-                    "id": "73f58e99-5f91-4e2f-a3d7-d6d48299a269",
-                    "path": "<Keyboard>/enter",
+                    "id": "94b9236a-e33c-4258-8e33-9eab2354be1e",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SuperFire",
+                    "action": "Turn Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df61f930-e0ac-4830-8d75-91ddc2727664",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52aa8eba-1923-4327-a74f-7541114daa0a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f031f1f4-171f-4582-b347-051fe3606e3f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
