@@ -4,10 +4,12 @@ public class Game : MonoBehaviour {
   // set in inspector
   public float enemySpawnDelay;
   public float switchDelay;
-  public GameObject enemyPrefab;
+  public float despawnTime;
+  public GameObject[] enemyPrefabs;
   public GameObject powerupPrefab;
   public BoxCollider2D spawnRangeRight;
   public BoxCollider2D spawnRangeLeft;
+  public Score gameScore;
 
   // private fields
   private float powerUpDelay;
@@ -16,8 +18,9 @@ public class Game : MonoBehaviour {
   private BoxCollider2D spawnRange;
   private float switchTimer;
   private Quaternion spawnDirection;
+  private int threshold = 1000;
 
-  private void Start() {
+    private void Start() {
     powerUpDelay = Random.Range(5f, 10f);
     powerupSpawnTimer = 0;
     spawnRange = spawnRangeRight;
@@ -28,15 +31,21 @@ public class Game : MonoBehaviour {
         Random.Range(spawnRange.bounds.min.x, spawnRange.bounds.max.x),
         Random.Range(spawnRange.bounds.min.y, spawnRange.bounds.max.y),
         0);
-    Instantiate(enemyPrefab, enemySpawnPt, spawnDirection);
-  }
+    GameObject enemy = Instantiate(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)], enemySpawnPt, spawnDirection);
+    Destroy(enemy, despawnTime);
+    }
   private void SpawnPowerup() {
     Vector3 powerupSpawnPt = new Vector3(
         Random.Range(spawnRange.bounds.min.x, spawnRange.bounds.max.x),
         Random.Range(spawnRange.bounds.min.y, spawnRange.bounds.max.y),
         0);
-    Instantiate(powerupPrefab, powerupSpawnPt, spawnDirection);
-  }
+    GameObject shieldBoost = Instantiate(powerupPrefab, powerupSpawnPt, spawnDirection);
+    Destroy(shieldBoost, despawnTime);
+    }
+    private void levelIncrease()
+    {
+        enemySpawnDelay -= 0.1f;
+    }
   void Update() {
     //if (!ui.IsReady) {
     //  return;
@@ -72,5 +81,11 @@ public class Game : MonoBehaviour {
             }
             switchTimer = 0;
         }
-  }
+
+    if (gameScore.score >= threshold)
+    {
+        levelIncrease();
+        threshold += 1000;
+    }
+    }
 }

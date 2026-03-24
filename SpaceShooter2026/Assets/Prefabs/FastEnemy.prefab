@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2481411660934603684}
   - component: {fileID: 4060100635781462192}
   - component: {fileID: -1162253528925871094}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 7
+  m_Name: FastEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 139651308463423097}
@@ -99,9 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18815278a21f432aa48915cffbdbeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 5
-  isHoming: 0
-  isBobber: 0
+  speed: 8
   expoPrefab: {fileID: 5386597588948128404, guid: 8a7efade44ac549dda33630687e1524f, type: 3}
 --- !u!50 &-1162253528925871094
 Rigidbody2D:
@@ -140,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139651308463423097}
   - component: {fileID: 4720018075961584924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +210,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.03915453, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.7533741, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

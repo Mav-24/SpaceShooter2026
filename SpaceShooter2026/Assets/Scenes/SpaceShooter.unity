@@ -6258,7 +6258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game
   enemySpawnDelay: 3
   switchDelay: 15
-  despawnTime: 3
+  despawnTime: 10
   enemyPrefabs:
   - {fileID: 3409777995842195204, guid: 992015109d2204d5c9a3ef2da01e8542, type: 3}
   - {fileID: 3409777995842195204, guid: 57529912bcbffbc4e8b6a74970bf47cd, type: 3}
