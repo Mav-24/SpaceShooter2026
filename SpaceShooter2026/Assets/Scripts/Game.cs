@@ -10,6 +10,8 @@ public class Game : MonoBehaviour {
   public BoxCollider2D spawnRangeRight;
   public BoxCollider2D spawnRangeLeft;
   public Score gameScore;
+  public GameObject pauseScreen;
+  public UI ui;
 
   // private fields
   private float powerUpDelay;
@@ -20,8 +22,9 @@ public class Game : MonoBehaviour {
   private Quaternion spawnDirection;
   private int threshold = 1000;
 
-    private void Start() {
+  private void Start() {
     powerUpDelay = Random.Range(5f, 10f);
+    //pauseScreen = GameObject.ge
     powerupSpawnTimer = 0;
     spawnRange = spawnRangeRight;
   }
@@ -47,9 +50,9 @@ public class Game : MonoBehaviour {
         enemySpawnDelay -= 0.1f;
     }
   void Update() {
-    //if (!ui.IsReady) {
-    //  return;
-    //}
+    if (!ui.IsReady) {
+      return;
+    }
 
     // check spawn enemy
     enemySpawnTimer += Time.deltaTime;
