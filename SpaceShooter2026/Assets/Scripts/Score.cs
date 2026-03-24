@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
   private TextMeshProUGUI txtScore;
-  private float score;
+  public float score;
 
   public static Score Instance { get; private set; }
 
@@ -22,6 +22,6 @@ public class Score : MonoBehaviour {
   }
 
   public void HitEnemy() {
-    score += 1_000;
+    score += 1_00;
   }
 }
