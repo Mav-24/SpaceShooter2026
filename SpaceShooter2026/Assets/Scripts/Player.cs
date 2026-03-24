@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             playerSfx.clip = sfxFire;
             playerSfx.Play();
-        }
+        } 
 
         var vertMove = SpaceShooterInput.Instance.input.MoveVertically.ReadValue<float>();
         this.transform.Translate(Vector3.up * speed * Time.deltaTime * vertMove);
@@ -89,6 +89,14 @@ public class Player : MonoBehaviour
 
         }
     }
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("EnemyBullet"))
+        {
+            DamageFromEnemy();
+            Destroy(c.gameObject);
+        }
+    }
 
     public void RefillShield()
     {
@@ -100,7 +108,7 @@ public class Player : MonoBehaviour
 
 
     public void TogglePause()
-    { 
+    {
         if (isPaused)
         {
             Time.timeScale = 1;

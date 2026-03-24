@@ -22,6 +22,7 @@ public class Score : MonoBehaviour {
   }
 
   public void HitEnemy() {
-    score += 1_00;
+    score += 2_50;
   }
+
 }

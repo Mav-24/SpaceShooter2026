@@ -7,8 +7,10 @@ public class Game : MonoBehaviour {
   public float despawnTime;
   public GameObject[] enemyPrefabs;
   public GameObject powerupPrefab;
+    public GameObject bossPrefab;
   public BoxCollider2D spawnRangeRight;
   public BoxCollider2D spawnRangeLeft;
+  public BoxCollider2D bossSpawnRange;
   public Score gameScore;
   public GameObject pauseScreen;
   public UI ui;
@@ -21,6 +23,7 @@ public class Game : MonoBehaviour {
   private float switchTimer;
   private Quaternion spawnDirection;
   private int threshold = 1000;
+  private int bossThreshold = 5000;
 
   private void Start() {
     powerUpDelay = Random.Range(5f, 10f);
@@ -37,6 +40,12 @@ public class Game : MonoBehaviour {
     GameObject enemy = Instantiate(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)], enemySpawnPt, spawnDirection);
     Destroy(enemy, despawnTime);
     }
+
+    private void SpawnBoss()
+    {
+        GameObject boss = Instantiate(bossPrefab, bossSpawnRange.bounds.center, Quaternion.identity);
+    }
+
   private void SpawnPowerup() {
     Vector3 powerupSpawnPt = new Vector3(
         Random.Range(spawnRange.bounds.min.x, spawnRange.bounds.max.x),
@@ -47,7 +56,11 @@ public class Game : MonoBehaviour {
     }
     private void levelIncrease()
     {
-        enemySpawnDelay -= 0.1f;
+        enemySpawnDelay -= 0.2f;
+        if (enemySpawnDelay < 0.5f)
+        {
+            enemySpawnDelay = 0.5f;
+        }
     }
   void Update() {
     if (!ui.IsReady) {
@@ -90,5 +103,12 @@ public class Game : MonoBehaviour {
         levelIncrease();
         threshold += 1000;
     }
+
+    if (gameScore.score >= bossThreshold)
+        {
+            SpawnBoss();
+            bossThreshold += 5000;
+        }
+
     }
 }

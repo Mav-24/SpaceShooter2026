@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - ShieldBoost
   - ScreenOutOfBounds
+  - Boss
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Bullet
   - Enemy
   - Powerup
-  - 
+  - EnemyBullet
   - 
   - 
   - 
