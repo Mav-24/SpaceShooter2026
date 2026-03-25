@@ -40,7 +40,7 @@ public class Boss : MonoBehaviour
         {
             if (bossHp > 0)
             {
-                bossHp -= 25;
+                bossHp -= 15;
                 Destroy(c.gameObject);
             }
             else if (bossHp <= 0)
